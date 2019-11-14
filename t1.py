@@ -38,17 +38,18 @@ def getAllUrl(pageSourceUrl):
     count=1
     while (True):
         allUrl=chain(allUrl,getPageUrl(chrome.page_source))
-        #print(count)
+        print(count)
         #print(chrome.find_element_by_class_name("ux-pager_btn__next").get_attribute("class"))
-        chrome.find_element_by_link_text("下一页").click()
-        time.sleep(3)
-        if (chrome.find_element_by_class_name("ux-pager_btn__next").get_attribute("class") == "ux-pager_btn ux-pager_btn__next z-dis"):
-            allUrl = chain(allUrl, getPageUrl(chrome.page_source))
-            print(count)
+        try:
+            chrome.find_element_by_link_text("下一页").click()
+            time.sleep(3)
+            count+=1
+        except:
+            print("没有找到元素")
             break
-        count+=1
     chrome.quit()
     allUrl = list(set(allUrl))  # 网址去重
+    allUrl.remove('http:http://www.icourse163.org/topics/2018NationalLevelMOOC/')
     return allUrl
 
 '''
@@ -66,12 +67,12 @@ def get_course_data(url):
     courseId= 'courseId : "(.*?)"'
     course_name = '<span class="course-title f-ib f-vam">(.*?)</span>'
     teacher = 'lectorName : "(.*?)"'
-    brief='<div class="f-richEditorText"><p>(.*?)</p></div>'
+
 
     courseId = re.compile(courseId).findall(data)  # 返回的是列表
     course_name = re.compile(course_name).findall(data)  # 返回的是列表
     teacher = re.compile(teacher).findall(data)  # 返回的是列表
-    brief = re.compile(brief).findall(data)  # 返回的是列表
+
 
     chrome.find_element_by_id("review-tag-button").click()
     time.sleep(2)
@@ -80,29 +81,55 @@ def get_course_data(url):
     score =re.compile(score).findall(data)  # 返回的是列表
 
     chrome.close()
-    return courseId[0],course_name[0], teacher[0],brief[0],score[0]
+    if (score==[] or course_name==[] or courseId ==[] or teacher==[]):
+        return None
+    else:
+        return courseId[0],course_name[0], teacher[0],score[0]
 
 '''
 作用：将课程信息保存到csv文件中
 '''
 def saveCourseInfoes(courseUrlList=[]):
     count=0
+    errorlist=[]
     with open('data.csv','w') as csvfile:
-        fieldnames=['CourseId','courseName','teacher','brief','score']
+        fieldnames=['CourseId','courseName','teacher','score']
         writer=csv.DictWriter(csvfile,fieldnames=fieldnames)
         writer.writeheader()
 
         while(count<courseUrlList.__len__()):
             data=get_course_data(courseUrlList[count])
-            if(data[0]!=""):
+            if(data!=None):
                 print(data)
-                writer.writerow({"CourseId":data[0],"courseName": data[1],"teacher": data[2],"brief": data[3],"score":data[4]})
+                writer.writerow({"CourseId":data[0],"courseName": data[1],"teacher": data[2],"score":data[3]})
+            else:
+                errorlist.append(courseUrlList[count])
             count+=1
-
+    return errorlist
+'''
 if __name__=='__main__':
-
     allUrl = getAllUrl("https://www.icourse163.org/category/all")
-    saveCourseInfoes(allUrl)
+    with open('allurl.csv', 'w') as csvfile:
+        field_all = ['AllUrl']
+        writer = csv.DictWriter(csvfile, fieldnames=field_all)
+        writer.writeheader()
+        for x in allUrl:
+            writer.writerow({"AllUrl":x})
+
+    errorlist=saveCourseInfoes(allUrl)
+    with open('errorUrl.csv', 'w') as csvfile1:
+        field_error = ['error']
+        writer1 = csv.DictWriter(csvfile1, fieldnames=field_error)
+        writer1.writeheader()
+        for y in errorlist:
+            writer1.writerow({"error":y})
+ 
+            '''
+get_course_data('http://www.icourse163.org/course/HZIC-1207129816')
+
+
+
+
 
 
 

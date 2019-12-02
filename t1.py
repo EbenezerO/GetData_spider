@@ -3,6 +3,7 @@ from selenium import webdriver
 from pyquery import PyQuery as pq
 import time
 import csv
+import pandas as pd
 import re
 from itertools import chain
 
@@ -64,27 +65,26 @@ def get_course_data(url):
     chrome.get(url)
     data = chrome.page_source
 
-    courseId= 'courseId : "(.*?)"'
+
     course_name = '<span class="course-title f-ib f-vam">(.*?)</span>'
-    teacher = 'lectorName : "(.*?)"'
+    teacher_name = 'lectorName : "(.*?)"'
+    summary='<div class="f-richEditorText">(.*?)</div>'
 
-
-    courseId = re.compile(courseId).findall(data)  # 返回的是列表
     course_name = re.compile(course_name).findall(data)  # 返回的是列表
-    teacher = re.compile(teacher).findall(data)  # 返回的是列表
+    teacher_name = re.compile(teacher_name).findall(data)  # 返回的是列表
+    summary =re.compile(summary).findall(data)
+    return course_name[0], teacher_name[0],summary
 
-
-    chrome.find_element_by_id("review-tag-button").click()
+'''
+     chrome.find_element_by_id("review-tag-button").click()
     time.sleep(2)
     score = '<div class="ux-mooc-comment-course-comment_head_rating-scores"><span>(.*?)</span></div>'
     data=chrome.page_source
     score =re.compile(score).findall(data)  # 返回的是列表
+    chrome.close()'''
 
-    chrome.close()
-    if (score==[] or course_name==[] or courseId ==[] or teacher==[]):
-        return None
-    else:
-        return courseId[0],course_name[0], teacher,score[0]
+
+
 
 '''
 作用：将课程信息保存到csv文件中
@@ -106,7 +106,7 @@ def saveCourseInfoes(courseUrlList=[]):
                 errorlist.append(courseUrlList[count])
             count+=1
     return errorlist
-
+'''
 if __name__=='__main__':
     allUrl = getAllUrl("https://www.icourse163.org/category/all")
     with open('allurl.csv', 'w') as csvfile:
@@ -122,8 +122,29 @@ if __name__=='__main__':
         writer1 = csv.DictWriter(csvfile1, fieldnames=field_error)
         writer1.writeheader()
         for y in errorlist:
-            writer1.writerow({"error":y})
- 
+            writer1.writerow({"error":y})'''
+
+'''
+file = pd.read_csv('allurl.csv')
+df = pd.DataFrame(file)
+
+dic={}
+for i in range(len(df)):
+    document = df[i:i+1]
+    url=document['AllUrl'][i]
+    dic[i]=url
+new_df = pd.DataFrame.from_dict(dic,orient='index')
+new_df.to_csv('pandas_allurl.csv')
+'''
+file = pd.read_csv('pandas_allurl.csv',usecols=['url'])
+df=pd.DataFrame(file)
+for i in range(len(df)):
+    document = df[i:i+1]
+    url = document['url'][i]
+    course_name, teacher_name,summary=get_course_data(url)
+
+
+
 
 
 

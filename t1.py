@@ -84,7 +84,7 @@ def get_course_data(url):
     if (score==[] or course_name==[] or courseId ==[] or teacher==[]):
         return None
     else:
-        return courseId[0],course_name[0], teacher[0],score[0]
+        return courseId[0],course_name[0], teacher,score[0]
 
 '''
 作用：将课程信息保存到csv文件中
@@ -106,7 +106,7 @@ def saveCourseInfoes(courseUrlList=[]):
                 errorlist.append(courseUrlList[count])
             count+=1
     return errorlist
-'''
+
 if __name__=='__main__':
     allUrl = getAllUrl("https://www.icourse163.org/category/all")
     with open('allurl.csv', 'w') as csvfile:
@@ -124,8 +124,8 @@ if __name__=='__main__':
         for y in errorlist:
             writer1.writerow({"error":y})
  
-            '''
-get_course_data('http://www.icourse163.org/course/HZIC-1207129816')
+
+
 
 
 

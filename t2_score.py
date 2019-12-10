@@ -112,7 +112,7 @@ def get_score_data(url):
 
 
 if __name__=='__main__':
-    file = pd.read_csv('pandas_allurl.csv', usecols=['url'])
+    file = pd.read_csv('pandas_allurl.csv', usecols=['id','url'])
     df = pd.DataFrame(file)
     with open('Score_info.csv', 'w', encoding='utf_8_sig') as csvfile:
         field = ['id', 'course_name', 'teacher_name', 'url', 'summary']
@@ -121,10 +121,10 @@ if __name__=='__main__':
         for i in range(len(df)):
             document = df[i:i + 1]
             url = document['url'][i]
-
+            id =document['id'][i]
             course_name, teacher_name, summary = get_score_data(url)
             writer.writerow(
-                {'id': i, 'course_name': course_name, 'teacher_name': teacher_name, 'url': url, 'summary': summary})
+                {'id': id, 'course_name': course_name, 'teacher_name': teacher_name, 'url': url, 'summary': summary})
             print(i)
 '''
 file = pd.read_csv('allurl.csv')

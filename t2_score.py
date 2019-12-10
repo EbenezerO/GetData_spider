@@ -114,7 +114,7 @@ def get_score_data(url):
 if __name__=='__main__':
     file = pd.read_csv('pandas_allurl.csv', usecols=['url'])
     df = pd.DataFrame(file)
-    with open('Score_info.csv', 'w', encoding='utf-8') as csvfile:
+    with open('Score_info.csv', 'w', encoding='utf_8_sig') as csvfile:
         field = ['id', 'course_name', 'teacher_name', 'url', 'summary']
         writer = csv.DictWriter(csvfile, fieldnames=field)
         writer.writeheader()

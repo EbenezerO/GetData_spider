@@ -136,29 +136,19 @@ for i in range(len(df)):
 new_df = pd.DataFrame.from_dict(dic,orient='index')
 new_df.to_csv('pandas_allurl.csv')
 '''
-file = pd.read_csv('pandas_allurl.csv',usecols=['url'])
-df=pd.DataFrame(file)
-with open('Course_info.csv','w',encoding='utf_8_sig') as csvfile:
-    field=['id','course_name','teacher_name','url','summary']
-    writer=csv.DictWriter(csvfile,fieldnames=field)
-    writer.writeheader()
-    for i in range(len(df)):
-        document = df[i:i+1]
-        url = document['url'][i]
-        course_name, teacher_name,summary=get_course_data(url)
-        writer.writerow({'id':i,'course_name':course_name,'teacher_name':teacher_name,'url':url,'summary':summary})
-        print(i)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+if __name__=='__main__':
+    file = pd.read_csv('1.csv', usecols=['id','url'])
+    df = pd.DataFrame(file)
+    with open('2.csv', 'w', encoding='utf_8_sig') as csvfile:
+        field = ['id', 'course_name', 'teacher_name', 'url', 'summary']
+        writer = csv.DictWriter(csvfile, fieldnames=field)
+        writer.writeheader()
+        for i in range(len(df)):
+            document = df[i:i + 1]
+            url = document['url'][i]
+            id = document['id'][i]
+            course_name, teacher_name, summary = get_course_data(url)
+            writer.writerow(
+                {'id': id, 'course_name': course_name, 'teacher_name': teacher_name, 'url': url, 'summary': summary})
+            print(id)

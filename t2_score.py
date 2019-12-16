@@ -30,11 +30,12 @@ def getPageScore(soup):
 
         #用户评分
         sScore=user_info[i].find_all('i',{'class':'star ux-icon-custom-rating-favorite'})
-        allScore.append(str(len(sScore)))
+        allScore.append(len(sScore))
 
         #评论内容
         sContent = content[i].find_all('span')
-        allContent.append(sContent[0].text)
+        str=sContent[0].text.replace('\n','')
+        allContent.append(str)
 
     return allUserName,allUserUrl,allContent,allScore
 '''
@@ -56,14 +57,17 @@ def get_score_data(url):
     allContent = []
     allScore = []
 
-    errorUrl=[]
+
+    data = chrome.page_source
+    soup = BeautifulSoup(data, 'html.parser')
+    no_comment = soup.find_all('div', {'class': 'ux-mooc-comment-course-comment_no-comment'})
+    if (len(no_comment) == 1):  # 没有评论
+        return allUserName, allUserUrl, allContent, allScore, url
+
     while(True):
         data = chrome.page_source
         soup = BeautifulSoup(data, 'html.parser')
-        no_comment = soup.find_all('div', {'class': 'ux-mooc-comment-course-comment_no-comment'})
-        if (len(no_comment) == 1): # 没有评论
-            errorUrl.append(url)
-            break
+
         tempUserName, tempUserUrl, tempContent, tempScore = getPageScore(soup)
         for i in range(len(tempScore)):
             allUserName.append(tempUserName[i])
@@ -76,26 +80,30 @@ def get_score_data(url):
             # print("到最后一页,成功结束")
             break
         chrome.find_element_by_link_text("下一页").click()
-        time.sleep(3)
+        time.sleep(2)
         count += 1
 
     chrome.quit()
     return allUserName, allUserUrl, allContent, allScore,errorUrl
 
 
-#get_score_data('http://www.icourse163.org/course/ECJTU-1206602803')
+#get_score_data('http://www.icourse163.org/course/HZAU-1002731009')
 '''
-file = pd.read_csv('Score_info.csv', usecols=['id'])
+file = pd.read_csv('Score_info.csv', usecols=['course_id'])
 df = pd.DataFrame(file)
-for i in range(len(df)):
-    document = df[i:i + 1]
-    course_id = document['id'][i]
-    '''
+t=df['course_id'].tolist()
+T=[]
+for i in t:
+    if not i in T:
+        T.append(i)
+for x in T:
+    print(x)
+'''
 if __name__=='__main__':
-    file = pd.read_csv('1.csv', usecols=['id','url'])
+    file = pd.read_csv('pandas_allurl.csv', usecols=['id','url'])
     df = pd.DataFrame(file)
 
-    with open('2.csv', 'w', encoding='utf_8_sig') as csvfile:
+    with open('2.csv', 'w', newline='',encoding='utf_8_sig') as csvfile:
         field = ['course_id', 'course_url', 'user_name', 'user_url', 'score','content']
         writer = csv.DictWriter(csvfile, fieldnames=field)
         writer.writeheader()
@@ -105,6 +113,7 @@ if __name__=='__main__':
             course_url = document['url'][i]
             course_id = document['id'][i]
             allUserName, allUserUrl, allContent, allScore, errorUrl = get_score_data(course_url)
+            print(i)
             if errorUrl:  # 课程没有评论
                 print(str(course_id) + ',' + errorUrl[0])
             for j in range(len(allUserName)):

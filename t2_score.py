@@ -70,8 +70,7 @@ def get_score_data(url):
             allUserUrl.append(tempUserUrl[i])
             allContent.append(tempContent[i])
             allScore.append(tempScore[i])
-
-        # print(count)
+            
         next = soup.find_all('li', {'class': 'ux-pager_btn ux-pager_btn__next'})
         if (len(next) == 0 or next[0].contents[1].attrs['class'] == ['th-bk-disable-gh']):  # 不满一页 或者 完成爬取
             # print("到最后一页,成功结束")

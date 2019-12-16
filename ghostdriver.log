@@ -1,0 +1,135 @@
+[INFO  - 2019-12-16T08:34:29.117Z] GhostDriver - Main - running on port 9134
+[INFO  - 2019-12-16T08:34:31.190Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2019-12-16T08:34:31.190Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.customHeaders:  - {}
+[INFO  - 2019-12-16T08:34:31.190Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2019-12-16T08:34:31.190Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: e154c010-1fde-11ea-a955-8bb5ce3f0eb2
+[ERROR - 2019-12-16T08:34:34.790Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:34:34.790Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - stack:
+  _event_is_disabled (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:24)
+  track (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:21)
+  (anonymous function) (http://mc.stu.126.net/pub/s/tp_course_intro_desktop_modules_info_index_f12715526f31dd90630b14aa539a3a80.js:14)
+  (anonymous function) (http://mc.stu.126.net/pub/s/core_91ed1c64fcb59946d2696f476a3a5f14.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:34:34.791Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:34:34.791Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - stack:
+  _event_is_disabled (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:24)
+  track (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:21)
+  (anonymous function) (http://mc.stu.126.net/pub/s/tp_course_intro_desktop_modules_info_index_f12715526f31dd90630b14aa539a3a80.js:14)
+  (anonymous function) (http://mc.stu.126.net/pub/s/core_91ed1c64fcb59946d2696f476a3a5f14.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:34:37.198Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:34:37.198Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - stack:
+  _event_is_disabled (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:24)
+  track (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:21)
+  (anonymous function) (http://mc.stu.126.net/pub/s/tp_course_intro_desktop_modules_info_index_f12715526f31dd90630b14aa539a3a80.js:14)
+  (anonymous function) (http://mc.stu.126.net/pub/s/core_91ed1c64fcb59946d2696f476a3a5f14.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:34:39.651Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:34:39.651Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - stack:
+  _event_is_disabled (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:24)
+  track (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:21)
+  (anonymous function) (http://mc.stu.126.net/pub/s/tp_course_intro_desktop_modules_info_index_f12715526f31dd90630b14aa539a3a80.js:14)
+  (anonymous function) (http://mc.stu.126.net/pub/s/core_91ed1c64fcb59946d2696f476a3a5f14.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:34:42.107Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:34:42.107Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - stack:
+  _event_is_disabled (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:24)
+  track (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:21)
+  (anonymous function) (http://mc.stu.126.net/pub/s/tp_course_intro_desktop_modules_info_index_f12715526f31dd90630b14aa539a3a80.js:14)
+  (anonymous function) (http://mc.stu.126.net/pub/s/core_91ed1c64fcb59946d2696f476a3a5f14.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:34:44.614Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:34:44.614Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - stack:
+  _event_is_disabled (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:24)
+  track (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:21)
+  (anonymous function) (http://mc.stu.126.net/pub/s/tp_course_intro_desktop_modules_info_index_f12715526f31dd90630b14aa539a3a80.js:14)
+  (anonymous function) (http://mc.stu.126.net/pub/s/core_91ed1c64fcb59946d2696f476a3a5f14.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:34:49.531Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:34:49.531Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - stack:
+  _event_is_disabled (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:24)
+  track (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:21)
+  (anonymous function) (http://mc.stu.126.net/pub/s/tp_course_intro_desktop_modules_info_index_f12715526f31dd90630b14aa539a3a80.js:14)
+  (anonymous function) (http://mc.stu.126.net/pub/s/core_91ed1c64fcb59946d2696f476a3a5f14.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:37:24.978Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:37:24.978Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - stack:
+  _event_is_disabled (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:24)
+  track (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:21)
+  (anonymous function) (http://mc.stu.126.net/pub/s/tp_course_intro_desktop_modules_info_index_f12715526f31dd90630b14aa539a3a80.js:14)
+  (anonymous function) (http://mc.stu.126.net/pub/s/core_91ed1c64fcb59946d2696f476a3a5f14.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:37:27.415Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:37:27.416Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - stack:
+  _event_is_disabled (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:24)
+  track (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:21)
+  (anonymous function) (http://mc.stu.126.net/pub/s/tp_course_intro_desktop_modules_info_index_f12715526f31dd90630b14aa539a3a80.js:14)
+  (anonymous function) (http://mc.stu.126.net/pub/s/core_91ed1c64fcb59946d2696f476a3a5f14.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:37:29.883Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:37:29.883Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - stack:
+  _event_is_disabled (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:24)
+  track (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:21)
+  (anonymous function) (http://mc.stu.126.net/pub/s/tp_course_intro_desktop_modules_info_index_f12715526f31dd90630b14aa539a3a80.js:14)
+  (anonymous function) (http://mc.stu.126.net/pub/s/core_91ed1c64fcb59946d2696f476a3a5f14.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:37:34.809Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:37:34.809Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - stack:
+  _event_is_disabled (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:24)
+  track (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:21)
+  (anonymous function) (http://mc.stu.126.net/pub/s/tp_course_intro_desktop_modules_info_index_f12715526f31dd90630b14aa539a3a80.js:14)
+  (anonymous function) (http://mc.stu.126.net/pub/s/core_91ed1c64fcb59946d2696f476a3a5f14.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:38:26.433Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:38:26.433Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - stack:
+  _event_is_disabled (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:24)
+  track (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:21)
+  (anonymous function) (http://mc.stu.126.net/pub/s/tp_course_intro_desktop_modules_info_index_f12715526f31dd90630b14aa539a3a80.js:14)
+  (anonymous function) (http://mc.stu.126.net/pub/s/core_91ed1c64fcb59946d2696f476a3a5f14.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:38:26.708Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-12-16T08:38:26.709Z] Session [e154c010-1fde-11ea-a955-8bb5ce3f0eb2] - page.onError - stack:
+  _event_is_disabled (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:24)
+  track (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:21)
+  (anonymous function) (http://mc.stu.126.net/pub/s/tp_course_intro_desktop_modules_info_index_f12715526f31dd90630b14aa539a3a80.js:14)
+  (anonymous function) (http://mc.stu.126.net/pub/s/core_91ed1c64fcb59946d2696f476a3a5f14.js:1)
+
+  phantomjs://platform/console++.js:263 in error

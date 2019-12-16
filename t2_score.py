@@ -48,7 +48,7 @@ def get_score_data(url):
     chrome = webdriver.PhantomJS(executable_path=r"D:\phantomjs-2.1.1-windows\bin\phantomjs.exe")
     chrome.get(url)
     chrome.find_element_by_id("review-tag-button").click()
-    time.sleep(1)
+    time.sleep(2)
     count = 1
 
     allUserName = []
@@ -70,24 +70,31 @@ def get_score_data(url):
             allUserUrl.append(tempUserUrl[i])
             allContent.append(tempContent[i])
             allScore.append(tempScore[i])
-            
+
         next = soup.find_all('li', {'class': 'ux-pager_btn ux-pager_btn__next'})
         if (len(next) == 0 or next[0].contents[1].attrs['class'] == ['th-bk-disable-gh']):  # 不满一页 或者 完成爬取
             # print("到最后一页,成功结束")
             break
         chrome.find_element_by_link_text("下一页").click()
-        time.sleep(2)
+        time.sleep(3)
         count += 1
 
     chrome.quit()
     return allUserName, allUserUrl, allContent, allScore,errorUrl
 
 
-#get_score_data('http://www.icourse163.org/course/ZJU-1206061801')
-
+#get_score_data('http://www.icourse163.org/course/ECJTU-1206602803')
+'''
+file = pd.read_csv('Score_info.csv', usecols=['id'])
+df = pd.DataFrame(file)
+for i in range(len(df)):
+    document = df[i:i + 1]
+    course_id = document['id'][i]
+    '''
 if __name__=='__main__':
-    file = pd.read_csv('pandas_allurl.csv', usecols=['id','url'])
+    file = pd.read_csv('1.csv', usecols=['id','url'])
     df = pd.DataFrame(file)
+
     with open('2.csv', 'w', encoding='utf_8_sig') as csvfile:
         field = ['course_id', 'course_url', 'user_name', 'user_url', 'score','content']
         writer = csv.DictWriter(csvfile, fieldnames=field)
@@ -97,12 +104,11 @@ if __name__=='__main__':
             document = df[i:i + 1]
             course_url = document['url'][i]
             course_id = document['id'][i]
-            print(course_id)
             allUserName, allUserUrl, allContent, allScore, errorUrl = get_score_data(course_url)
             if errorUrl:  # 课程没有评论
-                print(str(course_id)+','+errorUrl[0])
-            for j in range(len(allScore)):
-                #print(str(course_id)+','+course_url+','+allUserName[j]+','+allUserUrl[j]+','+allScore[j]+','+allContent[j])
+                print(str(course_id) + ',' + errorUrl[0])
+            for j in range(len(allUserName)):
+                #print(str(course_id) + ',' + course_url + ',' + allUserName[j] + ',' + allUserUrl[j] + ',' + allScore[j] + ',' + allContent[j])
                 writer.writerow({'course_id': str(course_id), 'course_url': course_url, 'user_name': allUserName[j],'user_url': allUserUrl[j], 'score': allScore[j], 'content': allContent[j]})
             time.sleep(2)
 

@@ -103,10 +103,10 @@ for x in T:
     print(x)
 '''
 if __name__ == '__main__':
-    file = pd.read_csv('pandas_allurl.csv', usecols=['id', 'url'])
+    file = pd.read_csv('1.csv', usecols=['id', 'url'])
     df = pd.DataFrame(file)
 
-    with open('2.csv', 'w', newline='', encoding='utf_8_sig') as csvfile:
+    with open('2.2.csv', 'w', newline='', encoding='utf_8_sig') as csvfile:
         field = ['course_id', 'course_url', 'user_name', 'user_url', 'score', 'content']
         writer = csv.DictWriter(csvfile, fieldnames=field)
         writer.writeheader()
@@ -116,7 +116,7 @@ if __name__ == '__main__':
             course_url = document['url'][i]
             course_id = document['id'][i]
             allUserName, allUserUrl, allContent, allScore, errorUrl = get_score_data(course_url)
-            #print(course_id)
+            # print(course_id)
             if len(allUserName) == 0:  # 课程没有评论
                 print(str(course_id) + ',' + errorUrl)
             for j in range(len(allUserName)):

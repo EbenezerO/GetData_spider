@@ -63,7 +63,7 @@ def get_score_data(url):
     soup = BeautifulSoup(data, 'html.parser')
     no_comment = soup.find_all('div', {'class': 'ux-mooc-comment-course-comment_no-comment'})
     if len(no_comment) == 1:  # 没有评论
-        return allUserName, allUserUrl, allContent, allScore, url
+        return allUserName, allUserUrl, allContent, allScore, 'no'
 
     while True:
         data = chrome.page_source
@@ -90,21 +90,28 @@ def get_score_data(url):
 
 # get_score_data('http://www.icourse163.org/course/HZAU-1002731009')
 '''
-file = pd.read_csv('Score_info.csv', usecols=['course_id'])
+file = pd.read_csv('wait1.csv', usecols=['course_id'])
 df = pd.DataFrame(file)
 t=df['course_id'].tolist()
-T=[]
-for i in t:
-    if not i in T:
-        T.append(i)
-for x in T:
-    print(x)
+T=list(set(t))
+
+file1 = pd.read_csv('errorUrl.csv', usecols=['id','url'])
+df1 = pd.DataFrame(file1)
+for i in range(len(df1)):
+    document = df1[i:i + 1]
+    course_url = document['url'][i]
+    course_id = document['id'][i]
+    if not course_id in T:
+        print(str(course_id) + ',' + course_url)
 '''
+
+
 if __name__ == '__main__':
     file = pd.read_csv('errorUrl.csv', usecols=['id', 'url'])
     df = pd.DataFrame(file)
 
-    with open('2.3.csv', 'w', newline='', encoding='utf_8_sig') as csvfile:
+    no_comment=[]
+    with open('wait3.csv', 'w', newline='', encoding='utf_8_sig') as csvfile:
         field = ['course_id', 'course_url', 'user_name', 'user_url', 'score', 'content']
         writer = csv.DictWriter(csvfile, fieldnames=field)
         writer.writeheader()
@@ -115,6 +122,8 @@ if __name__ == '__main__':
             course_id = document['id'][i]
             allUserName, allUserUrl, allContent, allScore, errorUrl = get_score_data(course_url)
             # print(course_id)
+            if errorUrl == 'no':  # 课程没有评论
+                no_comment.append(str(course_id) + ',' + course_url)
             if len(allUserName) == 0:  # 课程没有评论
                 print(str(course_id) + ',' + errorUrl)
             for j in range(len(allUserName)):
@@ -122,3 +131,7 @@ if __name__ == '__main__':
                                  'user_url': allUserUrl[j],
                                  'score': allScore[j], 'content': allContent[j]})
             time.sleep(2)
+
+    print('-------------------')
+    for x in no_comment:
+        print(x)

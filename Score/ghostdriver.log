@@ -1,12 +1,12 @@
-[INFO  - 2019-12-18T06:24:33.901Z] GhostDriver - Main - running on port 11517
-[INFO  - 2019-12-18T06:24:38.397Z] Session [114a4070-215f-11ea-9eca-4b32dd5c95d3] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
-[INFO  - 2019-12-18T06:24:38.397Z] Session [114a4070-215f-11ea-9eca-4b32dd5c95d3] - page.customHeaders:  - {}
-[INFO  - 2019-12-18T06:24:38.397Z] Session [114a4070-215f-11ea-9eca-4b32dd5c95d3] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2019-12-18T06:24:38.397Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 114a4070-215f-11ea-9eca-4b32dd5c95d3
-[ERROR - 2019-12-18T06:24:45.618Z] Session [114a4070-215f-11ea-9eca-4b32dd5c95d3] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
+[INFO  - 2019-12-18T07:46:25.305Z] GhostDriver - Main - running on port 4615
+[INFO  - 2019-12-18T07:46:27.430Z] Session [7f4bde70-216a-11ea-a770-6d530aef6db8] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2019-12-18T07:46:27.430Z] Session [7f4bde70-216a-11ea-a770-6d530aef6db8] - page.customHeaders:  - {}
+[INFO  - 2019-12-18T07:46:27.430Z] Session [7f4bde70-216a-11ea-a770-6d530aef6db8] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2019-12-18T07:46:27.431Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 7f4bde70-216a-11ea-a770-6d530aef6db8
+[ERROR - 2019-12-18T07:46:31.331Z] Session [7f4bde70-216a-11ea-a770-6d530aef6db8] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2019-12-18T06:24:45.619Z] Session [114a4070-215f-11ea-9eca-4b32dd5c95d3] - page.onError - stack:
+[ERROR - 2019-12-18T07:46:31.331Z] Session [7f4bde70-216a-11ea-a770-6d530aef6db8] - page.onError - stack:
   _event_is_disabled (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:24)
   track (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:21)
   _fixTop (http://mc.stu.126.net/pub/s/tp_course_intro_desktop_modules_info_index_cbb5854468f23d3bf39d2ddaafef1332.js:14)
@@ -14,16 +14,13 @@
   (anonymous function) (http://mc.stu.126.net/pub/s/core_18b3d96a5efb1bf7a10455339f53f864.js:1)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2019-12-18T06:24:45.620Z] Session [114a4070-215f-11ea-9eca-4b32dd5c95d3] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
+[ERROR - 2019-12-18T07:46:31.332Z] Session [7f4bde70-216a-11ea-a770-6d530aef6db8] - page.onError - msg: TypeError: undefined is not an object (evaluating 'this._flags.disable_all_events')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2019-12-18T06:24:45.620Z] Session [114a4070-215f-11ea-9eca-4b32dd5c95d3] - page.onError - stack:
+[ERROR - 2019-12-18T07:46:31.332Z] Session [7f4bde70-216a-11ea-a770-6d530aef6db8] - page.onError - stack:
   _event_is_disabled (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:24)
   track (http://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.11.js:21)
   _addRecommendLog (http://mc.stu.126.net/pub/s/tp_course_intro_desktop_modules_info_index_cbb5854468f23d3bf39d2ddaafef1332.js:14)
   (anonymous function) (http://mc.stu.126.net/pub/s/core_18b3d96a5efb1bf7a10455339f53f864.js:1)
 
   phantomjs://platform/console++.js:263 in error
-Fatal Windows exception, code 0xc0000005.
-PhantomJS has crashed. Please read the bug reporting guide at
-<http://phantomjs.org/bug-reporting.html> and file a bug report.

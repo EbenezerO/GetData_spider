@@ -90,28 +90,28 @@ def get_score_data(url):
 
 # get_score_data('http://www.icourse163.org/course/HZAU-1002731009')
 '''
-file = pd.read_csv('wait1.csv', usecols=['course_id'])
+file = pd.read_csv('errorUrl.csv', usecols=['course_id'])
 df = pd.DataFrame(file)
 t=df['course_id'].tolist()
 T=list(set(t))
 
-file1 = pd.read_csv('errorUrl.csv', usecols=['id','url'])
+file1 = pd.read_csv('no_comment.csv', usecols=['course_id','course_url'])
 df1 = pd.DataFrame(file1)
 for i in range(len(df1)):
     document = df1[i:i + 1]
-    course_url = document['url'][i]
-    course_id = document['id'][i]
+    course_url = document['course_url'][i]
+    course_id = document['course_id'][i]
     if not course_id in T:
         print(str(course_id) + ',' + course_url)
+
+
 '''
-
-
 if __name__ == '__main__':
-    file = pd.read_csv('errorUrl.csv', usecols=['id', 'url'])
+    file = pd.read_csv('all_course_url.csv', usecols=['id', 'url'])
     df = pd.DataFrame(file)
 
     no_comment=[]
-    with open('wait3.csv', 'w', newline='', encoding='utf_8_sig') as csvfile:
+    with open('Score_info.csv', 'w', newline='', encoding='utf_8_sig') as csvfile:
         field = ['course_id', 'course_url', 'user_name', 'user_url', 'score', 'content']
         writer = csv.DictWriter(csvfile, fieldnames=field)
         writer.writeheader()
@@ -124,7 +124,7 @@ if __name__ == '__main__':
             # print(course_id)
             if errorUrl == 'no':  # 课程没有评论
                 no_comment.append(str(course_id) + ',' + course_url)
-            if len(allUserName) == 0:  # 课程没有评论
+            if len(allUserName) == 0  and errorUrl != 'no':  # 出现错误
                 print(str(course_id) + ',' + errorUrl)
             for j in range(len(allUserName)):
                 writer.writerow({'course_id': str(course_id), 'course_url': course_url, 'user_name': allUserName[j],

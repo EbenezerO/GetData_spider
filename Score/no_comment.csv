@@ -1,6 +1,5 @@
-id,url
+course_id,course_url
 13,http://www.icourse163.org/course/NEAU-1205992813
-18,http://www.icourse163.org/course/CCNU-1206358801
 41,http://www.icourse163.org/course/NJTU-1205971813
 72,http://www.icourse163.org/course/SUT-1206706820
 126,http://www.icourse163.org/course/UESTC-1206686846
@@ -18,7 +17,6 @@ id,url
 461,http://www.icourse163.org/course/SUST-1206453811
 508,http://www.icourse163.org/course/HZAU-1206647804
 541,http://www.icourse163.org/course/SCU-1207041803
-593,http://www.icourse163.org/course/ZJU-1206418807
 600,http://www.icourse163.org/course/JDZTCDX-1207048813
 656,http://www.icourse163.org/course/NCU-1206677817
 666,http://www.icourse163.org/course/ZJU-1205907819
@@ -26,7 +24,6 @@ id,url
 714,http://www.icourse163.org/course/NWPU-1206529801
 826,http://www.icourse163.org/course/WHUT-1206647806
 828,http://www.icourse163.org/course/LZU-1206430802
-851,http://www.icourse163.org/course/SWUFE-1003520007
 862,http://www.icourse163.org/course/ZJU-1206451847
 903,http://www.icourse163.org/course/BNU-1206868802
 981,http://www.icourse163.org/course/KMUST-1206693820
@@ -47,19 +44,12 @@ id,url
 1384,http://www.icourse163.org/course/SJTU-1003637008
 1400,http://www.icourse163.org/course/ZUST-1206643806
 1407,http://www.icourse163.org/course/ECNU-1206887802
-1413,http://www.icourse163.org/course/XJTU-1003707005
 1445,http://www.icourse163.org/course/ZJU-1206460831
 1457,http://www.icourse163.org/course/KMUST-1206696810
-1507,http://www.icourse163.org/course/NJUPT-1001656002
 1509,http://www.icourse163.org/course/BIT-1207113821
-1510,http://www.icourse163.org/course/ZJU-1206456840
-1551,http://www.icourse163.org/course/NJU-1001572004
 1563,http://www.icourse163.org/course/ZUFE-1206497815
 1666,http://www.icourse163.org/course/BIT-1207119818
-1685,http://www.icourse163.org/course/BISTU-1206405817
 1710,http://www.icourse163.org/course/SISU-1206452816
 1759,http://www.icourse163.org/course/BIT-1207116812
 1760,http://www.icourse163.org/course/ZNUEDU-1206695859
-1797,http://www.icourse163.org/course/UIBE-1206453822
-1801,http://www.icourse163.org/course/ECJTU-1206610801
 1824,http://www.icourse163.org/course/JXUFE-1206456826

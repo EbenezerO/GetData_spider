@@ -1,7 +1,6 @@
 # -*- coding : utf-8 -*-
 # coding: utf-8
 import time
-
 from selenium import webdriver
 from bs4 import BeautifulSoup
 from selenium.webdriver.chrome.options import Options
@@ -25,7 +24,8 @@ def get_user_data(url):
     opt.add_argument('--disable-gpu')  # 谷歌文档提到需要加上这个属性来规避bug
     opt.add_argument('blink-settings=imagesEnabled=false')  # 不加载图片, 提升速度
     opt.add_argument('--headless')  # 浏览器不提供可视化页面. linux下如果系统不支持可视化不加这条会启动失败
-    chrome = webdriver.Chrome(executable_path = "C:\Program Files (x86)\Google\Chrome\Application\chromedriver", options=opt)
+    #chrome = webdriver.Chrome(executable_path = r"C:\Program Files (x86)\Google\Chrome\Application\chromedriver", options=opt)
+    chrome = webdriver.Chrome(executable_path = r"C:\Users\13058\AppData\Local\Google\Chrome\Application\chromedriver", options=opt)
     chrome.get(url)
 
     course_list = []
@@ -35,18 +35,17 @@ def get_user_data(url):
 
     while True:
         data = chrome.page_source
-        soup = BeautifulSoup(data, 'html.parser')
-
-        courseCard = soup.find('div', {'class': 'u-courseCard-container'})  # 所有用户信息
-        srlist = courseCard.find_all('div', {'class': 'u-cc-courseFunc  f-cb'})
+        soup = BeautifulSoup(data, 'lxml')
+        time.sleep(3)
+        srlist = soup.find_all('div', {'class': 'cc-courseFunc-f'})
 
         for x in srlist:
             url = x.find_all('a')
             url = url[0].attrs['href']
             course_list.append(url[2:-6])
 
-        next = courseCard.find_all('li', {'class': 'pager_next'})
-        dis_next = courseCard.find_all('li', {'class': 'pager_next z-dis'})
+        next = soup.find_all('li', {'class': 'pager_next'})
+        dis_next = soup.find_all('li', {'class': 'pager_next z-dis'})
         if len(next) == 0 or len(dis_next) == 1:  # 不满一页 或者 完成爬取
             break
         chrome.find_element_by_link_text("下一页").click()
@@ -88,23 +87,30 @@ def save_user():
             writer.writerow({'user_id': user_id, 'user_name': user_name, 'user_url': user_url})
 
 
-get_user_data('http://www.icourse163.org/home.htm?userId=1024532082#/home/course')
-'''
-if __name__ == '__main__':
-    data = pd.read_csv('wait.csv')
-    # print(data.columns)  # 获取列索引值
-    all_url = data['user_url']  # 获取列名为user url的数据  Series类型 （key ：value）
-    all_url = list(all_url)
+# get_user_data('http://www.icourse163.org/home.htm?userId=1024532082#/home/course')
 
-    index=1545
+
+if __name__ == '__main__':
+    file = pd.read_csv('User_info.csv')
+    df = pd.DataFrame(file)
+
     course_list = []
-    for url in all_url:
-        list = get_user_data('https://'+url+'#/home/course')
-        print(str(index)+','+str(list))
-        course_list.append(list)
-        index+=1
+
+    for i in range(len(df)):
+        document = df[i:i + 1]
+        user_url = document['user_url'][i]
+        user_id = document['user_id'][i]
+        try:
+            list = get_user_data('https://' + user_url + '#/home/course')
+            print(str(user_id) + ',"' + str(list)+'"')
+            course_list.append(list)
+        except:
+            time.sleep(10)
+            list = get_user_data('https://' + user_url + '#/home/course')
+            print(str(user_id) + ',"' + str(list)+'"')
+            course_list.append(list)
+
 
     course_list = pd.Series(course_list)
-    data['course_list'] = course_list  # 将新列的名字设置为course_list
-    data.to_csv("1.csv", mode='a', index=False)  # mode=a，以追加模式写入,header表示列名，默认为true,index表示行名，默认为true，再次写入不需要行名
-'''
+    file['course_list'] = course_list  # 将新列的名字设置为course_list
+    file.to_csv("1.csv", mode='a', index=False)  # mode=a，以追加模式写入,header表示列名，默认为true,index表示行名，默认为true，再次写入不需要行名

@@ -1,5 +1,6 @@
 # -*- coding : utf-8 -*-
 # coding: utf-8
+import re
 import time
 from selenium import webdriver
 from bs4 import BeautifulSoup
@@ -90,28 +91,42 @@ def save_user():
             user_name = new_name[i]
             writer.writerow({'user_id': user_id, 'user_name': user_name, 'user_url': user_url})
 
+def dupli_remove():
+    file1 = pd.read_csv('User_info.csv',encoding='utf_8_sig')
+    df1 = pd.DataFrame(file1)
+    res=[]
+    for j in range(len(df1)):
+        document = df1[j:j + 1]
+        course_list = document['list'][j]
+        str = re.sub('\'', '', course_list)
+        str=str[1:-1]
+        temp=''
+        for k in str:
+            if k != ',':
+                temp+=k
+            else:
+                res.append(temp)
+                temp=''
+        res.append(temp)
+    res = list(set(res))
+    print(len(res))
+    print(res)
 
- # get_user_data('http://www.icourse163.org/home.htm?userId=1390180596#/home/course')
-
-file = pd.read_csv('five2.csv')
-id_list = file['user_id'].tolist()
-for x in id_list:
-    print(str(x)+',[]')
 '''
-file = pd.read_csv('pass51.csv')
+file = pd.read_csv('pass61.csv')
 id_list = file['id'].tolist()
 
 l1=[]  # 所有没有获取到信息的 user_id
-count = 10000
-while count <= 99999 :
+count = 100000
+while count <= 230914 :
     if count not in id_list:
         l1.append(count)
     count += 1
 
-file1 = pd.read_csv('five2.csv')
+file1 = pd.read_csv('six2.csv')
 df1 = pd.DataFrame(file1)
 
-with open('five3.csv', 'w', newline='', encoding='utf_8_sig') as csvfile:
+with open('six3.csv', 'w', newline='', encoding='utf_8_sig') as csvfile:
     field = ['user_id','user_name','user_url']
     writer = csv.DictWriter(csvfile, fieldnames=field)
     writer.writeheader()
@@ -120,32 +135,18 @@ with open('five3.csv', 'w', newline='', encoding='utf_8_sig') as csvfile:
         user_url = document['user_url'][j]
         user_id = document['user_id'][j]
         user_name = document['user_name'][j]
-        if user_id not in id_list:
+        if user_id not in id_list:      # 需要更改
             writer.writerow({'user_id':user_id,'user_name':user_name,'user_url':user_url})
+    
+-------------------------------------------
+file1 = pd.read_csv('pass5.csv')
+    course_list = file1['list']
 
-'''
-'''
-if __name__ == '__main__':
-    file = pd.read_csv('four2.csv')
-    df = pd.DataFrame(file)
-
-    course_list = []
-
-    for i in range(len(df)):
-        document = df[i:i + 1]
-        user_url = document['user_url'][i]
-        user_id = document['user_id'][i]
-        try:
-            list = get_user_data('https://' + user_url + '#/home/course')
-            print(str(user_id) + ',' + str(list))
-            course_list.append(list)
-        except:
-            time.sleep(10)
-            list = get_user_data('https://' + user_url + '#/home/course')
-            print(str(user_id) + ',' + str(list))
-            course_list.append(list)
-
-    course_list = pd.Series(course_list)
+    file = pd.read_csv('User_info.csv')
     file['course_list'] = course_list  # 将新列的名字设置为course_list
-    file.to_csv("1.csv", mode='a', index=False)  # mode=a，以追加模式写入,header表示列名，默认为true,index表示行名，默认为true，再次写入不需要行名
+    file.to_csv("2.csv", mode='a', index=False)  # mode=a，以追加模式写入,header表示列名，默认为true,index表示行名，默认为true，再次写入不需要行名 
+
 '''
+
+if __name__ == '__main__':
+     dupli_remove()

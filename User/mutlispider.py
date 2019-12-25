@@ -15,15 +15,15 @@ def run(in_q,lock):
     opt.add_argument('--disable-gpu')  # 谷歌文档提到需要加上这个属性来规避bug
     opt.add_argument('blink-settings=imagesEnabled=false')  # 不加载图片, 提升速度
     opt.add_argument('--headless')  # 浏览器不提供可视化页面. linux下如果系统不支持可视化不加这条会启动失败
-    chrome = webdriver.Chrome(executable_path = r"C:\Program Files (x86)\Google\Chrome\Application\chromedriver", options=opt)
-    #chrome = webdriver.Chrome(executable_path=r"C:\Users\13058\AppData\Local\Google\Chrome\Application\chromedriver",options=opt)
+    #chrome = webdriver.Chrome(executable_path = r"C:\Program Files (x86)\Google\Chrome\Application\chromedriver", options=opt)
+    chrome = webdriver.Chrome(executable_path=r"C:\Users\13058\AppData\Local\Google\Chrome\Application\chromedriver",options=opt)
 
     while in_q.empty() is not True:
         course_list = []
 
         temp = in_q.get()
-        chrome.get(temp[5:]) # k = 几位数
-        user_id = temp[0:5]
+        chrome.get(temp[6:]) # k = 几位数
+        user_id = temp[0:6]
         while True:
             data = chrome.page_source
             soup = BeautifulSoup(data, 'lxml')
@@ -53,7 +53,7 @@ def run(in_q,lock):
             in_q.put(temp)
         else:
             lock.acquire()  # 加锁
-            with open('pass5.txt', 'a+') as f:
+            with open('pass6.txt', 'a+') as f:
                 f.writelines(str(user_id) + ',"' + str(new_li)+'"')
                 f.writelines("\n")
             lock.release()  # 解锁
@@ -64,7 +64,7 @@ def run(in_q,lock):
 if __name__ == '__main__':
     queue = Queue()
 
-    file = pd.read_csv('five2.csv')
+    file = pd.read_csv('six2.csv')
     df = pd.DataFrame(file)
     for i in range(len(df)):
         document = df[i:i + 1]
@@ -74,7 +74,7 @@ if __name__ == '__main__':
 
     # 加线程锁
     lock = threading.Lock()
-    for index in range(20):
+    for index in range(10):
         thread = Thread(target=run, args=(queue,lock))
         thread.daemon = True  # 随主线程退出而退出
         thread.start()
